@@ -11,6 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+/**
+ * Сущность - домашнее животное, у которого может быть много игрушек
+ */
 public class Pet {
     private Long id;
     private String name;

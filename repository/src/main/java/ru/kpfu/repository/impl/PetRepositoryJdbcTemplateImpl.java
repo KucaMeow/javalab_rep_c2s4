@@ -6,7 +6,9 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import ru.kpfu.model.Pet;
+import ru.kpfu.model.Toy;
 import ru.kpfu.repository.PetRepository;
+import ru.kpfu.repository.ToyRepository;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -37,6 +39,8 @@ public class PetRepositoryJdbcTemplateImpl implements PetRepository {
     public Optional<Pet> find(Long id) {
         try {
             Pet pet = jdbcTemplate.queryForObject(SQL_SELECT_BY_ID, new Object[] {id}, petRowMapper);
+            ToyRepository tr = new ToyRepositoryJdbcTemplateImpl(jdbcTemplate);
+            pet.setToys(tr.findAllByPetId(pet.getId()));
             return Optional.ofNullable(pet);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
@@ -63,7 +67,36 @@ public class PetRepositoryJdbcTemplateImpl implements PetRepository {
     }
 
     @Override
+    public void saveWithToys(Pet entity) {
+        save(entity);
+        Long pet_id = entity.getId();
+
+        ToyRepository tr = new ToyRepositoryJdbcTemplateImpl(jdbcTemplate);
+
+        for(Toy t : entity.getToys()) {
+            t.setPetId(pet_id);
+            tr.save(t);
+        }
+    }
+
+    @Override
     public void delete(Long id) {
         jdbcTemplate.update(SQL_DELETE, id);
+    }
+
+    @Override
+    public void deleteWithToys (Long id) {
+        Optional<Pet> optionalPet = find(id);
+        if(optionalPet.isPresent()) {
+            Pet pet = optionalPet.get();
+            //Удалили питомца
+            delete(pet.getId());
+
+            ToyRepository tr = new ToyRepositoryJdbcTemplateImpl(jdbcTemplate);
+            for(Toy t : pet.getToys()) {
+                //Удалили игрушку
+                tr.delete(t.getId());
+            }
+        }
     }
 }
