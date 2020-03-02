@@ -7,5 +7,6 @@ public interface CrudRepository <ID, MDL> {
     Optional<MDL> find (ID id);
     List<MDL> findAll ();
     void save (MDL entity);
+    void update (MDL entity);
     void delete (ID id);
 }

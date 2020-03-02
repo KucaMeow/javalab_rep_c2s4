@@ -22,6 +22,8 @@ public class ToyRepositoryJdbcTemplateImpl implements ToyRepository {
     //language=SQL
     private final static String SQL_SELECT_ALL_BY_PET_ID = "SELECT * FROM toy WHERE pet_id = ?";
     //language=SQL
+    private final static String SQL_UPDATE= "UPDATE toy SET name = ?, pet_id = ? WHERE id = ?";
+    //language=SQL
     private final static String SQL_INSERT= "INSERT INTO toy(name, pet_id) VALUES (?, ?)";
     //language=SQL
     private final static String SQL_DELETE= "DELETE FROM pet WHERE id = ?";
@@ -34,6 +36,7 @@ public class ToyRepositoryJdbcTemplateImpl implements ToyRepository {
             Toy.builder()
                     .id(row.getLong("id"))
                     .name(row.getString("name"))
+                    .PetId(row.getLong("pet_id"))
                     .build();
 
     @Override
@@ -53,7 +56,7 @@ public class ToyRepositoryJdbcTemplateImpl implements ToyRepository {
 
     @Override
     public List<Toy> findAllByPetId(Long id) {
-        return jdbcTemplate.query(SQL_SELECT_ALL, new Object[] {id}, toyRowMapper);
+        return jdbcTemplate.query(SQL_SELECT_ALL_BY_PET_ID, new Object[] {id}, toyRowMapper);
     }
 
     @Override
@@ -62,14 +65,19 @@ public class ToyRepositoryJdbcTemplateImpl implements ToyRepository {
 
         jdbcTemplate.update(connection -> {
             PreparedStatement statement = connection
-                    .prepareStatement(SQL_INSERT);
+                    .prepareStatement(SQL_INSERT, new String[] {"id"});
             statement.setString(1, entity.getName());
             statement.setLong(2, entity.getPetId());
             return statement;
         }, keyHolder);
 
-        entity.setId((Long)keyHolder.getKey());
+        entity.setId(keyHolder.getKey().longValue());
 
+    }
+
+    @Override
+    public void update(Toy entity) {
+        jdbcTemplate.update(SQL_UPDATE, entity.getName(), entity.getPetId(), entity.getId());
     }
 
     @Override

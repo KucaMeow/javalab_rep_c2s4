@@ -3,6 +3,7 @@ package ru.kpfu.repository.impl;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import ru.kpfu.model.Pet;
@@ -22,6 +23,8 @@ public class PetRepositoryJdbcTemplateImpl implements PetRepository {
     private final static String SQL_SELECT_ALL = "SELECT * FROM pet";
     //language=SQL
     private final static String SQL_INSERT= "INSERT INTO pet(name) VALUES (?)";
+    //language=SQL
+    private final static String SQL_UPDATE= "UPDATE pet SET name = ? WHERE id = ?";
     //language=SQL
     private final static String SQL_DELETE= "DELETE FROM pet WHERE id = ?";
     private JdbcTemplate jdbcTemplate;
@@ -58,12 +61,17 @@ public class PetRepositoryJdbcTemplateImpl implements PetRepository {
 
         jdbcTemplate.update(connection -> {
             PreparedStatement statement = connection
-                    .prepareStatement(SQL_INSERT);
+                    .prepareStatement(SQL_INSERT, new String[] {"id"});
             statement.setString(1, entity.getName());
             return statement;
         }, keyHolder);
 
-        entity.setId((Long)keyHolder.getKey());
+        entity.setId(keyHolder.getKey().longValue());
+    }
+
+    @Override
+    public void update(Pet entity) {
+        jdbcTemplate.update(SQL_UPDATE, entity.getName(), entity.getId());
     }
 
     @Override
@@ -98,5 +106,11 @@ public class PetRepositoryJdbcTemplateImpl implements PetRepository {
                 tr.delete(t.getId());
             }
         }
+    }
+
+    @Override
+    public void updateWithToys(Pet entity) {
+        deleteWithToys(entity.getId());
+        saveWithToys(entity);
     }
 }
