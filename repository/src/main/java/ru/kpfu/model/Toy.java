@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class Toy {
     private Long id;
     private String name;
-    private Long PetId;
+    private Long pet_id;
 }

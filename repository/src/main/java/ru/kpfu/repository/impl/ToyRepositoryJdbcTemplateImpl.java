@@ -11,6 +11,7 @@ import ru.kpfu.repository.ToyRepository;
 
 import java.sql.PreparedStatement;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class ToyRepositoryJdbcTemplateImpl implements ToyRepository {
@@ -36,7 +37,6 @@ public class ToyRepositoryJdbcTemplateImpl implements ToyRepository {
             Toy.builder()
                     .id(row.getLong("id"))
                     .name(row.getString("name"))
-                    .PetId(row.getLong("pet_id"))
                     .build();
 
     @Override
@@ -62,12 +62,11 @@ public class ToyRepositoryJdbcTemplateImpl implements ToyRepository {
     @Override
     public void save(Toy entity) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
-
         jdbcTemplate.update(connection -> {
             PreparedStatement statement = connection
                     .prepareStatement(SQL_INSERT, new String[] {"id"});
             statement.setString(1, entity.getName());
-            statement.setLong(2, entity.getPetId());
+            statement.setLong(2, entity.getPet_id());
             return statement;
         }, keyHolder);
 
@@ -77,7 +76,8 @@ public class ToyRepositoryJdbcTemplateImpl implements ToyRepository {
 
     @Override
     public void update(Toy entity) {
-        jdbcTemplate.update(SQL_UPDATE, entity.getName(), entity.getPetId(), entity.getId());
+        Long petId;
+        jdbcTemplate.update(SQL_UPDATE, entity.getName(), entity.getPet_id(), entity.getId());
     }
 
     @Override

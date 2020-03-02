@@ -12,15 +12,14 @@ import ru.kpfu.repository.PetRepository;
 import ru.kpfu.repository.ToyRepository;
 
 import java.sql.PreparedStatement;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class PetRepositoryJdbcTemplateImpl implements PetRepository {
 
     //language=SQL
-    private final static String SQL_SELECT_BY_ID = "SELECT * FROM pet WHERE id = ?";
+    private final static String SQL_SELECT_BY_ID = "SELECT pet.*, toy.id AS t_id, toy.name AS t_name FROM pet LEFT JOIN toy ON pet.id = toy.pet_id WHERE pet.id = ?";
     //language=SQL
-    private final static String SQL_SELECT_ALL = "SELECT * FROM pet";
+    private final static String SQL_SELECT_ALL = "SELECT pet.*, toy.id AS t_id, toy.name AS t_name FROM pet LEFT JOIN toy ON pet.id = toy.pet_id";
     //language=SQL
     private final static String SQL_INSERT= "INSERT INTO pet(name) VALUES (?)";
     //language=SQL
@@ -29,25 +28,37 @@ public class PetRepositoryJdbcTemplateImpl implements PetRepository {
     private final static String SQL_DELETE= "DELETE FROM pet WHERE id = ?";
     private JdbcTemplate jdbcTemplate;
 
+    private static Map<Long, Pet> pets = new HashMap<>();
+
     public PetRepositoryJdbcTemplateImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-    private RowMapper<Pet> petRowMapper = (row, rowNum) ->
-            Pet.builder()
-                    .id(row.getLong("id"))
+    private RowMapper<Pet> petRowMapper = (row, rowNum) -> {
+        Long id = row.getLong("id");
+        if(!pets.containsKey(id)) {
+            pets.put(id, Pet.builder()
+                    .id(id)
                     .name(row.getString("name"))
-                    .build();
+                    .toys(new ArrayList<>())
+                    .build());
+        }
+        pets.get(id)
+                .getToys()
+                .add(
+                        Toy.builder()
+                                .id(row.getLong("t_id"))
+                                .name(row.getString("t_name"))
+                                .build());
+        return pets.get(id);
+    };
 
     @Override
     public Optional<Pet> find(Long id) {
-        try {
-            Pet pet = jdbcTemplate.queryForObject(SQL_SELECT_BY_ID, new Object[] {id}, petRowMapper);
-            ToyRepository tr = new ToyRepositoryJdbcTemplateImpl(jdbcTemplate);
-            pet.setToys(tr.findAllByPetId(pet.getId()));
-            return Optional.ofNullable(pet);
-        } catch (EmptyResultDataAccessException e) {
+        jdbcTemplate.query(SQL_SELECT_BY_ID, new Object[] {id}, petRowMapper);
+        if(pets.containsKey(id))
+            return Optional.of(pets.get(id));
+        else
             return Optional.empty();
-        }
     }
 
     @Override
@@ -82,7 +93,7 @@ public class PetRepositoryJdbcTemplateImpl implements PetRepository {
         ToyRepository tr = new ToyRepositoryJdbcTemplateImpl(jdbcTemplate);
 
         for(Toy t : entity.getToys()) {
-            t.setPetId(pet_id);
+            t.setPet_id(pet_id);
             tr.save(t);
         }
     }
