@@ -1,5 +1,6 @@
 package ru.itis.controllers;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ import java.io.InputStream;
 @MultipartConfig
 public class FilesController {
 
-    @Qualifier("proxy")
+    @Qualifier("service")
     @Autowired
     private FileService fileService;
 
@@ -50,7 +51,7 @@ public class FilesController {
         // TODO: отдать пользователю
         try {
             InputStream is = fileService.getFileIS(fileName);
-            org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
+            IOUtils.copy(is, response.getOutputStream());
             response.flushBuffer();
         } catch (IOException ex) {
             throw new RuntimeException("IOError writing file to output stream");

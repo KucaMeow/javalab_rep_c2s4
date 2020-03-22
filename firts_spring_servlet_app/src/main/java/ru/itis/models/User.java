@@ -14,5 +14,7 @@ public class User {
     private String email;
     private String username;
     private String password;
-    private boolean verified;
+
+    private State state;
+    private Role role;
 }

@@ -22,14 +22,14 @@ public class LoginController {
         return new ModelAndView("login");
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView logIn(LoginDto user) {
-        if(loginService.userIsPresent(user)) {
-            AppConfig.session().setAttribute("user", user);
-            return new ModelAndView("redirect:/files");
-        }
-        else
-            return new ModelAndView("redirect:/login");
-    }
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public ModelAndView logIn(LoginDto user) {
+//        if(loginService.userIsPresent(user)) {
+//            AppConfig.session().setAttribute("user", user);
+//            return new ModelAndView("redirect:/files");
+//        }
+//        else
+//            return new ModelAndView("redirect:/login");
+//    }
 
 }

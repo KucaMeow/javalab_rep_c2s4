@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.itis.dto.LoginDto;
+import ru.itis.models.State;
 import ru.itis.repositories.UsersRepository;
 
 @Service
@@ -17,6 +18,6 @@ public class LoginService {
     }
 
     public boolean userIsVerified (LoginDto user) {
-        return usersRepository.findByEmail(user.getEmail()).get().isVerified();
+        return usersRepository.findByEmail(user.getEmail()).get().getState().equals(State.CONFIRMED);
     }
 }

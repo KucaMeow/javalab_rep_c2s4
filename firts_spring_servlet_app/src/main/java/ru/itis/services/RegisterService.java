@@ -1,6 +1,7 @@
 package ru.itis.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import ru.itis.dto.RegisterDto;
 import ru.itis.repositories.UsersRepository;
@@ -12,10 +13,14 @@ public class RegisterService {
     EmailService emailService;
 
     @Autowired
+    PasswordEncoder passwordEncoder;
+
+    @Autowired
     UsersRepository usersRepository;
 
     public boolean saveUser (RegisterDto user) {
         try {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             usersRepository.save(user);
             emailService.sendVerify(user);
             return true;

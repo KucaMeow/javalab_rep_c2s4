@@ -4,6 +4,9 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.aop.AfterReturningAdvice;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,21 +29,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+@Aspect
 @Component
 @PropertySource("classpath:application.properties")
-public class AfterUploadAdvice implements AfterReturningAdvice {
+public class AfterUploadAnnotationAdvice  {
 
     @Autowired
     Environment environment;
 
-    @Override
-    public void afterReturning(Object returnValue, Method method, Object[] args, Object target) {
-        if(method.getName().equals("saveFile"))
-            sendFileEmail((FileInfo) returnValue);
-    }
-
-
-    public void sendFileEmail(FileInfo entity) {
+    @AfterReturning(value = "execution(* ru.itis.services.FileService.saveFile(*))", returning = "result")
+    public void sendFileEmail(JoinPoint jp, Object result) {
+        FileInfo entity = (FileInfo)result;
         try {
             Properties props = new Properties();
             props.put("mail.smtp.host", "smtp.gmail.com");
@@ -51,7 +50,7 @@ public class AfterUploadAdvice implements AfterReturningAdvice {
             String password = environment.getProperty("password");
 
             Session session = Session.getInstance(props,
-                    new javax.mail.Authenticator() {
+                    new Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
                             return new PasswordAuthentication(username, password);
                         }

@@ -3,6 +3,7 @@ package ru.itis.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,6 +26,7 @@ public class FileService {
 
     private String path;
 
+    @Secured("ROLE_ADMIN")
     public FileInfo saveFile (MultipartFile file) {
         path = environment.getProperty("storage.path");
         String filename = UUID.randomUUID().toString();

@@ -6,9 +6,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import ru.itis.config.security_details.UserDetailsImpl;
 import ru.itis.dto.RegisterDto;
+import ru.itis.models.Role;
+import ru.itis.models.State;
 import ru.itis.models.User;
 
 import java.sql.PreparedStatement;
@@ -23,7 +28,7 @@ public class UsersRepositoryImpl implements UsersRepository {
     //language=SQL
     private static final String SQL_SELECT_BY_EMAIL = "SELECT * FROM users WHERE email = ?";
     //language=SQL
-    private static final String SQL_UPDATE_VERIFIED_BY_EMAIL = "UPDATE users SET verified = TRUE WHERE email = ?";
+    private static final String SQL_UPDATE_VERIFIED_BY_EMAIL = "UPDATE users SET verified = 'CONFIRMED' WHERE email = ?";
     //language=SQL
     private static final String SQL_SELECT_ALL = "SELECT * FROM users";
     //language=SQL
@@ -40,7 +45,8 @@ public class UsersRepositoryImpl implements UsersRepository {
                     .email(row.getString("email"))
                     .username(row.getString("username"))
                     .password(row.getString("password"))
-                    .verified(row.getBoolean("verified"))
+                    .state(State.valueOf(row.getString("verified")))
+                    .role(Role.valueOf(row.getString("role")))
                     .build();
 
     @Override
@@ -80,6 +86,8 @@ public class UsersRepositoryImpl implements UsersRepository {
                 .username(entity.getUsername())
                 .email(entity.getEmail())
                 .password(entity.getPassword())
+                .role(Role.ROLE_USER)
+                .state(State.NOT_CONFIRMED)
                 .build();
         save(temp);
         return temp;

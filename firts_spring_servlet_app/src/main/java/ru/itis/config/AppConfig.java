@@ -6,12 +6,12 @@ import org.springframework.aop.AfterReturningAdvice;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -26,6 +26,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @PropertySource("classpath:application.properties")
+@EnableAspectJAutoProxy
 public class AppConfig {
 
     public static HttpSession session() {
@@ -72,16 +73,21 @@ public class AppConfig {
         return multipartResolver;
     }
 
-    @Qualifier("service")
-    @Autowired
-    FileService fileService;
-    @Autowired
-    AfterReturningAdvice afterReturningAdvice;
-
-    @Bean(name = "proxy")
-    public FileService proxy() {
-        ProxyFactory proxyFactory = new ProxyFactory(fileService);
-        proxyFactory.addAdvice(afterReturningAdvice);
-        return (FileService) proxyFactory.getProxy();
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
+
+//    @Qualifier("service")
+//    @Autowired
+//    FileService fileService;
+//    @Autowired
+//    AfterReturningAdvice afterReturningAdvice;
+//
+//    @Bean(name = "proxy")
+//    public FileService proxy() {
+//        ProxyFactory proxyFactory = new ProxyFactory(fileService);
+//        proxyFactory.addAdvice(afterReturningAdvice);
+//        return (FileService) proxyFactory.getProxy();
+//    }
 }
