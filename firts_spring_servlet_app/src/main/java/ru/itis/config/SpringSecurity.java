@@ -21,27 +21,26 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        super.configure(http);
 
         http.csrf().disable();
-
         http.authorizeRequests()
                 .antMatchers("/files").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/login").permitAll()
-                .antMatchers("/register").permitAll();
+                .antMatchers("/register").permitAll()
+                .antMatchers("/verify").permitAll()
+                .anyRequest().authenticated();
         http.formLogin()
                 .loginPage("/login")
                 .usernameParameter("email")
-                .defaultSuccessUrl("/")
-                .failureForwardUrl("/login?error")
-                .permitAll();
+                .passwordParameter("password")
+                .defaultSuccessUrl("/files")
+                .failureForwardUrl("/login?error");
 
     }
 
     @Autowired
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        super.configure(auth);
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
 }

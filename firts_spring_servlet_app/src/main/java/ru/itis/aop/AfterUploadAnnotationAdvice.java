@@ -37,7 +37,7 @@ public class AfterUploadAnnotationAdvice  {
     @Autowired
     Environment environment;
 
-    @AfterReturning(value = "execution(* ru.itis.services.FileService.saveFile(*))", returning = "result")
+    @AfterReturning(value = "execution(* ru.itis.services.FileService.saveFile(..))", returning = "result")
     public void sendFileEmail(JoinPoint jp, Object result) {
         FileInfo entity = (FileInfo)result;
         try {

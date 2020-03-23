@@ -2,7 +2,7 @@
 <dataSource name="frstspringservletapp@localhost">
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.15">
     <root id="1">
-      <ServerVersion>10.6</ServerVersion>
+      <ServerVersion>10.12</ServerVersion>
     </root>
     <database id="2" parent="1" name="Chat">
       <ObjectId>32768</ObjectId>
@@ -23,11 +23,11 @@
       <ObjectId>65546</ObjectId>
       <StateNumber>988</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1038</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1089</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
-      <Relations>sequence|table|73749|73751|1
-sequence|table|65547|65549|1
+      <Relations>sequence|table|65547|65549|1
+sequence|table|73749|73751|1
 </Relations>
     </database>
     <database id="6" parent="1" name="javalab">
@@ -114,7 +114,7 @@ sequence|table|65547|65549|1
       <Comment>standard public schema</Comment>
       <StateNumber>351</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1039</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1090</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -198,7 +198,7 @@ sequence|table|65547|65549|1
     <table id="31" parent="20" name="users">
       <ObjectId>65549</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>994</StateNumber>
+      <StateNumber>1066</StateNumber>
     </table>
     <column id="32" parent="30" name="id">
       <Position>1</Position>
@@ -240,8 +240,8 @@ sequence|table|65547|65549|1
     </column>
     <column id="38" parent="30" name="type">
       <Position>7</Position>
-      <DataType>varchar(25)|0s</DataType>
-      <StateNumber>1004</StateNumber>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1088</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="39" parent="30" name="extention">
@@ -278,8 +278,8 @@ sequence|table|65547|65549|1
     </column>
     <column id="44" parent="31" name="password">
       <Position>3</Position>
-      <DataType>varchar(25)|0s</DataType>
-      <StateNumber>989</StateNumber>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1072</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="45" parent="31" name="email">
@@ -290,30 +290,37 @@ sequence|table|65547|65549|1
     </column>
     <column id="46" parent="31" name="verified">
       <Position>5</Position>
-      <DataType>boolean|0s</DataType>
-      <StateNumber>994</StateNumber>
-      <DefaultExpression>false</DefaultExpression>
-      <TypeId>16</TypeId>
+      <DataType>varchar(25)|0s</DataType>
+      <StateNumber>1063</StateNumber>
+      <DefaultExpression>&apos;NOT_CONFIRMED&apos;::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
     </column>
-    <index id="47" parent="31" name="users_username_key">
+    <column id="47" parent="31" name="role">
+      <Position>6</Position>
+      <DataType>varchar(25)|0s</DataType>
+      <StateNumber>1066</StateNumber>
+      <DefaultExpression>&apos;ROLE_USER&apos;::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="48" parent="31" name="users_username_key">
       <ObjectId>65553</ObjectId>
-      <StateNumber>994</StateNumber>
+      <StateNumber>1066</StateNumber>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="48" parent="31" name="users_email_key">
+    <index id="49" parent="31" name="users_email_key">
       <ObjectId>65555</ObjectId>
-      <StateNumber>994</StateNumber>
+      <StateNumber>1066</StateNumber>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="49" parent="31" name="users_username_key">
+    <key id="50" parent="31" name="users_username_key">
       <ObjectId>65554</ObjectId>
       <StateNumber>989</StateNumber>
       <ColNames>username</ColNames>
       <UnderlyingIndexName>users_username_key</UnderlyingIndexName>
     </key>
-    <key id="50" parent="31" name="users_email_key">
+    <key id="51" parent="31" name="users_email_key">
       <ObjectId>65556</ObjectId>
       <StateNumber>989</StateNumber>
       <ColNames>email</ColNames>

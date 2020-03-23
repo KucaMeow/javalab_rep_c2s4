@@ -4,15 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import ru.itis.config.AppConfig;
-import ru.itis.dto.LoginDto;
 import ru.itis.models.FileInfo;
 import ru.itis.repositories.FileRepository;
 
 import java.io.*;
+import java.security.Principal;
 import java.util.UUID;
 
 @Service("service")
@@ -27,7 +25,7 @@ public class FileService {
     private String path;
 
     @Secured("ROLE_ADMIN")
-    public FileInfo saveFile (MultipartFile file) {
+    public FileInfo saveFile(MultipartFile file, Principal principal) {
         path = environment.getProperty("storage.path");
         String filename = UUID.randomUUID().toString();
         String ext = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.') + 1);
@@ -37,7 +35,8 @@ public class FileService {
                 .origName(file.getOriginalFilename())
                 .type(file.getContentType())
                 .extention(ext)
-                .uploadUser(((LoginDto)AppConfig.session().getAttribute("user")).getEmail())
+//                .uploadUser(((LoginDto)AppConfig.session().getAttribute("user")).getEmail())
+                .uploadUser(principal.getName())
                 .path(path + filename + "." + ext)
                 .state(0)
                 .build();

@@ -11,6 +11,6 @@ import javax.servlet.annotation.MultipartConfig;
 public class MainController {
     @RequestMapping("/")
     public ModelAndView defaultPage() {
-        return new ModelAndView("redirect:/login");
+        return new ModelAndView("redirect:/files");
     }
 }

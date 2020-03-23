@@ -18,6 +18,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.Principal;
 
 @Controller
 @MultipartConfig
@@ -29,17 +30,17 @@ public class FilesController {
 
     @RequestMapping("/files")
     public ModelAndView getMainPage() {
-        LoginDto user = (LoginDto) AppConfig.session().getAttribute("user");
-        if(user != null) {
+//        LoginDto user = (LoginDto) AppConfig.session().getAttribute("user");
+//        if(user != null) {
             return new ModelAndView("upload");
-        }
-        else
-            return new ModelAndView("redirect:/login");
+//        }
+//        else
+//            return new ModelAndView("redirect:/login");
     }
 
     @RequestMapping(value = "/files", method =  RequestMethod.POST)
-    public ModelAndView uploadFile(@RequestParam("file") MultipartFile multipartFile) {
-        fileService.saveFile(multipartFile);
+    public ModelAndView uploadFile(@RequestParam("file") MultipartFile multipartFile, Principal principal) {
+        fileService.saveFile(multipartFile, principal);
         return null;
     }
 
@@ -47,8 +48,6 @@ public class FilesController {
 
     @RequestMapping(value ="/files/{file-name:.+}" , method = RequestMethod.GET)
     public ModelAndView getFile(@PathVariable("file-name") String fileName, HttpServletResponse response) {
-        // TODO: найти на диске
-        // TODO: отдать пользователю
         try {
             InputStream is = fileService.getFileIS(fileName);
             IOUtils.copy(is, response.getOutputStream());
