@@ -9,7 +9,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import ru.itis.dto.RegisterDto;
-import ru.itis.models.FileInfo;
 import ru.itis.repositories.UsersRepository;
 
 import javax.mail.*;

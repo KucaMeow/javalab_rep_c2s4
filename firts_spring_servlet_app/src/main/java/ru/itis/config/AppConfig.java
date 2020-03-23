@@ -2,25 +2,17 @@ package ru.itis.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.extern.log4j.Log4j;
-import org.springframework.aop.AfterReturningAdvice;
-import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import ru.itis.repositories.FileRepository;
-import ru.itis.services.FileService;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
@@ -78,17 +70,4 @@ public class AppConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-//    @Qualifier("service")
-//    @Autowired
-//    FileService fileService;
-//    @Autowired
-//    AfterReturningAdvice afterReturningAdvice;
-//
-//    @Bean(name = "proxy")
-//    public FileService proxy() {
-//        ProxyFactory proxyFactory = new ProxyFactory(fileService);
-//        proxyFactory.addAdvice(afterReturningAdvice);
-//        return (FileService) proxyFactory.getProxy();
-//    }
 }

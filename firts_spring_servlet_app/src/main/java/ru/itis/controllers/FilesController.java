@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import ru.itis.config.AppConfig;
-import ru.itis.dto.LoginDto;
 import ru.itis.services.FileService;
 
 import javax.servlet.annotation.MultipartConfig;
@@ -30,12 +28,7 @@ public class FilesController {
 
     @RequestMapping("/files")
     public ModelAndView getMainPage() {
-//        LoginDto user = (LoginDto) AppConfig.session().getAttribute("user");
-//        if(user != null) {
             return new ModelAndView("upload");
-//        }
-//        else
-//            return new ModelAndView("redirect:/login");
     }
 
     @RequestMapping(value = "/files", method =  RequestMethod.POST)

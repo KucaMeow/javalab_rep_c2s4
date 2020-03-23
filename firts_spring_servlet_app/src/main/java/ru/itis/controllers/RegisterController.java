@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import ru.itis.dto.RegisterDto;
-import ru.itis.services.EmailService;
 import ru.itis.services.RegisterService;
 
 @Controller
@@ -14,8 +13,6 @@ public class RegisterController {
 
     @Autowired
     private RegisterService registerService;
-    @Autowired
-    private EmailService emailVerificationService;
 
     @RequestMapping("/register")
     public ModelAndView getRegisterPage() {
