@@ -35,6 +35,6 @@
     </table>
 </form>
 <br>
-<a href="/register">Register</a>
+<a href="register">Register</a>
 </body>
 </html>

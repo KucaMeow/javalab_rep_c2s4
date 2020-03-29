@@ -23,7 +23,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8090/firts_spring_servlet_app_war/files",
+                url: "http://localhost:8080/firts_spring_servlet_app_war/files",
                 data: formData,
                 processData: false,
                 contentType: false
