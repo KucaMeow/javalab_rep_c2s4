@@ -28,11 +28,6 @@ import javax.sql.DataSource;
 @EnableAspectJAutoProxy
 public class AppConfig {
 
-    public static HttpSession session() {
-        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        return attr.getRequest().getSession(true);
-    }
-
     @Autowired
     private Environment environment;
 
@@ -62,13 +57,6 @@ public class AppConfig {
     @Bean
     public DataSource hikariDataSource() {
         return new HikariDataSource(hikariConfig());
-    }
-
-    @Bean(name = "multipartResolver")
-    public CommonsMultipartResolver multipartResolver() {
-        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(10000000);
-        return multipartResolver;
     }
 
     @Bean

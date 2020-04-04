@@ -27,7 +27,7 @@ public class RegisterService {
             emailService.sendVerify(user);
             return true;
         } catch (Exception e) {
-            return false;
+            throw new IllegalArgumentException(e);
         }
     }
 

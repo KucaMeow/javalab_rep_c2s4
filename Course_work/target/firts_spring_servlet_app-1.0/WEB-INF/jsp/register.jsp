@@ -15,7 +15,7 @@
 <jsp:include page="header.jsp"/>
 <main style="padding-top: 6rem">
     <div class="col-3 mx-auto">
-        <form>
+        <form method="post">
             <div class="form-group">
                 <label for="">Email</label>
                 <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="">
@@ -24,14 +24,6 @@
                 <label for="">Пароль</label>
                 <input type="password" class="form-control" name="password" id="password" placeholder="">
             </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" name="remember-me" id="remember-me" value="true"
-                           checked>
-                    Remember me
-                </label>
-            </div>
-            <br>
             <button type="submit" class="btn btn-dark mr-0">Зарегистрироваться</button>
             <br>
             <br>

@@ -21,10 +21,14 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf()
+        http
+                .csrf()
                 .disable()
                 .authorizeRequests()
 
+                .antMatchers("/").permitAll()
+                .antMatchers("/verify").permitAll()
+                .antMatchers("/home").permitAll()
                 .antMatchers("/login").not().authenticated()
                 .antMatchers("/register").not().authenticated()
                 .antMatchers("/sandbox").authenticated()
@@ -39,7 +43,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/")
-                .failureForwardUrl("/login?error")
+                .failureForwardUrl("/login?error=true")
 
                 .and()
                 .rememberMe().key("Don'tShowItToAnyone")

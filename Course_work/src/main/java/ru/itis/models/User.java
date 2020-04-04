@@ -6,19 +6,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Primary;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(name = "user", schema = "public")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
-    private String username;
     private String password;
 
     private State state;

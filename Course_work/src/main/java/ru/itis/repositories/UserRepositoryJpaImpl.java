@@ -28,8 +28,7 @@ public class UserRepositoryJpaImpl implements UsersRepository {
     public User save(RegisterDto entity) {
         User user = User.builder()
                 .email(entity.getEmail())
-                .username(entity.getUsername())
-                .password(passwordEncoder.encode(entity.getPassword()))
+                .password(entity.getPassword())
                 .role(Role.ROLE_USER)
                 .state(State.NOT_CONFIRMED)
                 .build();
@@ -42,13 +41,13 @@ public class UserRepositoryJpaImpl implements UsersRepository {
     public void verify(String email) {
         User user = findByEmail(email).get();
         user.setState(State.CONFIRMED);
-        entityManager.refresh(user);
+        entityManager.persist(user);
     }
 
     @Override
     @Transactional
     public Optional<User> findByEmail(String username) {
-        Query q = entityManager.createQuery("SELECT u FROM User u WHERE u.email = " + username, User.class);
+        Query q = entityManager.createQuery("SELECT u FROM User u WHERE u.email = '" + username + "'", User.class);
         User user = (User) q.getSingleResult();
         if(user != null)
             return Optional.of(user);

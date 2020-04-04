@@ -65,7 +65,6 @@ public class EmailService {
 
             Map paramMap = new HashMap();
             paramMap.put("email", user.getEmail());
-            paramMap.put("username", user.getUsername());
             Writer out = new StringWriter();
 
             template.process(paramMap, out);

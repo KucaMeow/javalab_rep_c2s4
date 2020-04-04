@@ -16,7 +16,8 @@ import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+//@Repository
+@Deprecated
 public class UsersRepositoryJdbcTImpl implements UsersRepository {
 
     //language=SQL
@@ -28,7 +29,7 @@ public class UsersRepositoryJdbcTImpl implements UsersRepository {
     //language=SQL
     private static final String SQL_SELECT_ALL = "SELECT * FROM users";
     //language=SQL
-    private static final String SQL_INSERT = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO users(email, password) VALUES (?, ?)";
     //language=SQL
     private final static String SQL_DELETE= "DELETE FROM users WHERE id = ?";
 
@@ -39,7 +40,6 @@ public class UsersRepositoryJdbcTImpl implements UsersRepository {
             User.builder()
                     .id(row.getLong("id"))
                     .email(row.getString("email"))
-                    .username(row.getString("username"))
                     .password(row.getString("password"))
                     .state(State.valueOf(row.getString("verified")))
                     .role(Role.valueOf(row.getString("role")))
@@ -67,9 +67,8 @@ public class UsersRepositoryJdbcTImpl implements UsersRepository {
         jdbcTemplate.update(connection -> {
             PreparedStatement statement = connection
                     .prepareStatement(SQL_INSERT, new String[] {"id"});
-            statement.setString(1, entity.getUsername());
-            statement.setString(2, entity.getEmail());
-            statement.setString(3, entity.getPassword());
+            statement.setString(1, entity.getEmail());
+            statement.setString(2, entity.getPassword());
             return statement;
         }, keyHolder);
 
@@ -79,7 +78,6 @@ public class UsersRepositoryJdbcTImpl implements UsersRepository {
     @Override
     public User save(RegisterDto entity) {
         User temp = User.builder()
-                .username(entity.getUsername())
                 .email(entity.getEmail())
                 .password(entity.getPassword())
                 .role(Role.ROLE_USER)

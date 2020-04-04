@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -15,10 +16,19 @@
 <jsp:include page="header.jsp"/>
 <main style="padding-top: 6rem">
     <div class="col-3 mx-auto">
-    <form>
+        <c:if test="${param.error eq 'true'}">
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
+        </div>
+        </c:if>
+        <form method="post">
         <div class="form-group">
             <label for="">Email</label>
-            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="">
+            <input type="email" class="form-control" name="email" id="email" placeholder="">
         </div>
         <div class="form-group">
             <label for="">Пароль</label>
