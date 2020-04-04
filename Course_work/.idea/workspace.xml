@@ -7,36 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="865ceb24-12ef-4280-bfff-41ccbb6df277" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/dfb86034-96df-4e37-9a6d-cbeaa2d484b8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/dfb86034-96df-4e37-9a6d-cbeaa2d484b8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/dfb86034-96df-4e37-9a6d-cbeaa2d484b8/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/dfb86034-96df-4e37-9a6d-cbeaa2d484b8/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firts_spring_servlet_app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/firts_spring_servlet_app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itis/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itis/config/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itis/config/JpaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itis/config/JpaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itis/config/security_config/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itis/config/security_config/SpringSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itis/config/security_details/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itis/config/security_details/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itis/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itis/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itis/dto/RegisterDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itis/dto/RegisterDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itis/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itis/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itis/repositories/UserRepositoryJpaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itis/repositories/UserRepositoryJpaImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itis/repositories/UsersRepositoryJdbcTImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itis/repositories/UsersRepositoryJdbcTImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itis/services/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itis/services/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itis/services/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itis/services/RegisterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ftl/email.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ftl/email.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ftl/file.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ftl/email.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ftl/email.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ftl/file.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/classes/ftl/email.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/classes/ftl/email.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/classes/ftl/file.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/jsp/email.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/jsp/email.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/jsp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/jsp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/jsp/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/firts_spring_servlet_app-1.0/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../firts_spring_servlet_app/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../firts_spring_servlet_app/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../firts_spring_servlet_app/target/classes/ftl/email.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/../firts_spring_servlet_app/target/classes/ftl/email.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../firts_spring_servlet_app/target/classes/ftl/file.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/../firts_spring_servlet_app/target/classes/ftl/file.ftl" afterDir="false" />
@@ -113,26 +85,7 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/config/security_config/SpringSecurity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="25" column="21" lean-forward="true" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/repositories/UsersRepositoryJdbcTImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -184,6 +137,11 @@
         <option value="$PROJECT_DIR$/src/main/java/ru/itis/config/security_config/SpringSecurity.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/itis/repositories/UserRepositoryJpaImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/itis/repositories/UsersRepositoryJdbcTImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/itis/controllers/ProjectErrorController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/errorPage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/itis/services/ErrorsService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/itis/controllers/ErrorController.java" />
       </list>
     </option>
   </component>
@@ -212,19 +170,6 @@
       </expand>
       <select />
     </treeState>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/compiler.xml" />
-        <option value="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-        <option value="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-        <option value="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-        <option value="$PROJECT_DIR$/firts_spring_servlet_app.iml" />
-        <option value="$PROJECT_DIR$/.idea/dataSources.xml" />
-      </list>
-    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="-4" />
@@ -269,35 +214,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="itis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Course_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Course_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="itis" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Course_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Course_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="itis" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="security_config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Course_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Course_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="itis" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="security_details" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Course_work" type="b2602c69:ProjectViewProjectNode" />
@@ -402,7 +318,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -419,6 +335,53 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.30">
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="Course_work" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="Course_work" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 9.0.30" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.30" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/home" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -555,7 +518,7 @@
       <workItem from="1585916539465" duration="1334000" />
       <workItem from="1585921628833" duration="5917000" />
       <workItem from="1585931334140" duration="1527000" />
-      <workItem from="1585986476104" duration="19090000" />
+      <workItem from="1585986476104" duration="21471000" />
     </task>
     <task id="LOCAL-00001" summary="Project init">
       <created>1586002781605</created>
@@ -564,18 +527,38 @@
       <option name="project" value="LOCAL" />
       <updated>1586002781605</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1 Rest controller&#10;2 repositories for user: Jpa, JDBC Template&#10;Spring security&#10;jsp and ftl">
+      <created>1586008524604</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586008524604</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Error page added">
+      <created>1586010041818</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586010041818</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixes">
+      <created>1586010296916</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586010296916</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30638000" />
+    <option name="totallyTimeSpent" value="33019000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-11" width="1922" height="1092" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Persistence" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26254" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26254" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -586,8 +569,8 @@
       <window_info anchor="bottom" id="Database Console" weight="0.32925585" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4994664" weight="0.32925585" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39959225" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4994664" visible="true" weight="0.32925585" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -616,55 +599,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project init" />
+    <MESSAGE value="1 Rest controller&#10;2 repositories for user: Jpa, JDBC Template&#10;Spring security&#10;jsp and ftl" />
+    <MESSAGE value="Error page added" />
+    <MESSAGE value="Fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/services/CodeExecuteService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="758">
-          <caret line="155" column="21" selection-start-line="155" selection-start-column="21" selection-end-line="155" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/controllers/SanboxController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#323#324#0" expanded="true" />
-            <element signature="e#371#372#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/sandbox.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="36" />
-          <folding>
-            <element signature="n#style#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/dto/EmailVerifyDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/dto/LoginDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -905,16 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
-          <folding>
-            <element signature="e#861#868#1#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.2.2.RELEASE/spring-security-core-5.2.2.RELEASE.jar!/org/springframework/security/crypto/password/PasswordEncoder.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -979,18 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/repositories/UserRepositoryJpaImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#0#51#1" expanded="true" />
-            <element signature="e#0#20#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/config/security_details/UserDetailsImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1004,6 +922,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/repositories/UsersRepositoryJdbcTImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/config/security_config/SpringSecurity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -1011,10 +936,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/repositories/UsersRepositoryJdbcTImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="247">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/errorPage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding>
+            <element signature="n#style#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="47" column="55" lean-forward="true" selection-start-line="47" selection-start-column="55" selection-end-line="47" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/repositories/UserRepositoryJpaImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#0#51#1" expanded="true" />
+            <element signature="e#0#20#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/services/ErrorsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="31" column="74" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/itis/controllers/ErrorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="98" selection-start-line="21" selection-start-column="98" selection-end-line="21" selection-end-column="98" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
