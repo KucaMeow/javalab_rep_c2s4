@@ -14,7 +14,7 @@ public class ProgramController {
     @Autowired
     CodeExecuteService codeExecuteService;
 
-    @PostMapping("/execute")
+    @PostMapping("/rest/execute")
     @PreAuthorize("isAuthenticated()")
     public ProgramResult handleProgram(@RequestParam("code") String code) {
         return codeExecuteService.executeProgram(code);

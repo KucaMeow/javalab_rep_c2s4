@@ -38,7 +38,7 @@
 
     function x() {
         var codeText = editor.getValue();
-        $.post("execute",
+        $.post("rest/execute",
             {
                 code:codeText
             },

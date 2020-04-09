@@ -60,19 +60,19 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .rememberMe().key("Don'tShowItToAnyone")
                 .rememberMeParameter("remember-me");
 
-//        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//        http.addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.antMatcher("/rest/**").addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
     }
 
     @Autowired
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
-//        auth.authenticationProvider(authenticationProvider);
+        auth.authenticationProvider(authenticationProvider);
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/signIn");
+        web.ignoring().antMatchers("/rest/signIn");
     }
 }
