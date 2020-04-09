@@ -9,7 +9,7 @@ import ru.itis.dto.ProgramResult;
 import ru.itis.services.CodeExecuteService;
 
 @RestController
-public class ProgramController {
+public class ProgramRestController {
 
     @Autowired
     CodeExecuteService codeExecuteService;
