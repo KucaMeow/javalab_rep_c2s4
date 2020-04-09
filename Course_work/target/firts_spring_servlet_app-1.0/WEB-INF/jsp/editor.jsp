@@ -11,7 +11,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"
             type="text/javascript"></script>
-    <script src="js/app-ajax.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="container"><div class="row mx-auto"><div id="editor">public class Main {
@@ -36,7 +35,7 @@
     editor.getSession().setMode("ace/mode/java");
     editor.setFontSize(20);
     editor.resize();
-    
+
     function x() {
         var codeText = editor.getValue();
         $.post("execute",
@@ -44,22 +43,20 @@
                 code:codeText
             },
             function (resultObj) {
-            var text = "";
-            var error = "";
-            resultObj.results.forEach(element => {
-                text += element;
-                text += "\n";
-            });
-            resultObj.errors.forEach(element => {
-                error += element;
-                error += "\n";
-            });
-            $('#result').text(text);
-            $('#errors').text(error);
-        })
-
+                var text = "";
+                var error = "";
+                resultObj.results.forEach(function (elem) {
+                    text += elem;
+                    text += "\n";
+                });
+                resultObj.errors.forEach(function (elem) {
+                    error += elem;
+                    error += "\n";
+                });
+                $('#result').text(text);
+                $('#errors').text(error);
+            })
     }
 </script>
-
 </body>
 </html>

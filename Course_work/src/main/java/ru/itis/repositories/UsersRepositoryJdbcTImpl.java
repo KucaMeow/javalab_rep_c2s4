@@ -21,17 +21,17 @@ import java.util.Optional;
 public class UsersRepositoryJdbcTImpl implements UsersRepository {
 
     //language=SQL
-    private static final String SQL_SELECT_BY_ID = "SELECT * FROM users WHERE id = ?";
+    private static final String SQL_SELECT_BY_ID = "SELECT * FROM public.user WHERE id = ?";
     //language=SQL
-    private static final String SQL_SELECT_BY_EMAIL = "SELECT * FROM users WHERE email = ?";
+    private static final String SQL_SELECT_BY_EMAIL = "SELECT * FROM public.user WHERE email = ?";
     //language=SQL
-    private static final String SQL_UPDATE_VERIFIED_BY_EMAIL = "UPDATE users SET verified = 'CONFIRMED' WHERE email = ?";
+    private static final String SQL_UPDATE_VERIFIED_BY_EMAIL = "UPDATE public.user SET state = 'CONFIRMED' WHERE email = ?";
     //language=SQL
-    private static final String SQL_SELECT_ALL = "SELECT * FROM users";
+    private static final String SQL_SELECT_ALL = "SELECT * FROM public.user";
     //language=SQL
-    private static final String SQL_INSERT = "INSERT INTO users(email, password) VALUES (?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO public.user(email, password, state, role) VALUES (?, ?, ?, ?)";
     //language=SQL
-    private final static String SQL_DELETE= "DELETE FROM users WHERE id = ?";
+    private final static String SQL_DELETE= "DELETE FROM public.user WHERE id = ?";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -41,7 +41,7 @@ public class UsersRepositoryJdbcTImpl implements UsersRepository {
                     .id(row.getLong("id"))
                     .email(row.getString("email"))
                     .password(row.getString("password"))
-                    .state(State.valueOf(row.getString("verified")))
+                    .state(State.valueOf(row.getString("state")))
                     .role(Role.valueOf(row.getString("role")))
                     .build();
 
@@ -69,6 +69,8 @@ public class UsersRepositoryJdbcTImpl implements UsersRepository {
                     .prepareStatement(SQL_INSERT, new String[] {"id"});
             statement.setString(1, entity.getEmail());
             statement.setString(2, entity.getPassword());
+            statement.setString(3, entity.getState().toString());
+            statement.setString(4, entity.getRole().toString());
             return statement;
         }, keyHolder);
 
