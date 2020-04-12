@@ -17,6 +17,6 @@ public class MainController {
 
     @RequestMapping("/home")
     public ModelAndView defaultPage() {
-        return new ModelAndView("home");
+        return new ModelAndView("chat");
     }
 }

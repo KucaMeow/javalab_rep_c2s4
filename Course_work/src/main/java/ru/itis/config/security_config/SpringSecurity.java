@@ -62,6 +62,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .rememberMe().key("Don'tShowItToAnyone")
                 .rememberMeParameter("remember-me");
 
+        //TODO: Перенести в другой проект REST, либо продолжить страдать и подключать его тут
 //        http.antMatcher("/rest/**").sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 //        http.antMatcher("/rest/**").addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
     }

@@ -4,9 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import ru.itis.dto.MessageDto;
+import ru.itis.repositories.MessagesRepository;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -20,6 +25,9 @@ public class User {
     private Long id;
     private String email;
     private String password;
+
+    @Transient
+    private List<MessageDto> messages = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private State state;
