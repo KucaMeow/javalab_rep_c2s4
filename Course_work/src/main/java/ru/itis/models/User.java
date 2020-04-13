@@ -26,9 +26,6 @@ public class User {
     private String email;
     private String password;
 
-    @Transient
-    private List<MessageDto> messages = new ArrayList<>();
-
     @Enumerated(EnumType.STRING)
     private State state;
     @Enumerated(EnumType.STRING)

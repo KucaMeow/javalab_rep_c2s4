@@ -1,55 +1,56 @@
 package ru.itis.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 import ru.itis.dto.MessageDto;
-import ru.itis.models.User;
+import ru.itis.models.MessagesList;
 import ru.itis.repositories.MessagesRepository;
-import ru.itis.repositories.UsersRepository;
+import ru.itis.scopes.UserScope;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
+@SessionScope
 public class ChatMessagesServiceImpl implements ChatMessagesService {
 
     @Autowired
-    UsersRepository usersRepository;
-    @Autowired
     MessagesRepository messagesRepository;
+    @Autowired
+    MessagesList messagesList;
+    @Autowired
+    ApplicationContext context;
 
     @Override
-    public void sendMessage(MessageDto message) {
+    public void saveMessage(MessageDto message) {
         messagesRepository.save(message);
-        for (User user : usersRepository.findAll()) {
-            synchronized (user.getMessages()) {
-                user.getMessages().add(message);
-                user.getMessages().notifyAll();
+        for (Map<String, Object> map : UserScope.objects.values()) {
+            MessagesList ml = (MessagesList) map.get("messagesList");
+            synchronized (ml.getMessages()) {
+                ml.getMessages().add(message);
+                ml.getMessages().notifyAll();
             }
         }
     }
 
     @Override
-    public List<MessageDto> sendMessagesToUser (Long userId) {
-        Optional<User> userOptional = usersRepository.find(userId);
-        if(!userOptional.isPresent()) {
-            return null;
-        }
-        User user = userOptional.get();
-        synchronized (user.getMessages()) {
-            if (user.getMessages().isEmpty()) {
+    public List<MessageDto> sendMessagesToUser () {
+        synchronized (messagesList.getMessages()) {
+            if (messagesList.getMessages().isEmpty()) {
                 try {
-                    user.getMessages().wait();
+                    messagesList.getMessages().wait();
                 } catch (InterruptedException e) {
                     throw new IllegalStateException(e);
                 }
             }
+            List<MessageDto> response = new ArrayList<>(messagesList.getMessages());
+            messagesList.getMessages().clear();
+            return response;
         }
-        List<MessageDto> response = new ArrayList<>(user.getMessages());
-        user.getMessages().clear();
-        return response;
     }
 
     @Override

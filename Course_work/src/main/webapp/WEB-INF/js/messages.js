@@ -1,20 +1,10 @@
 function sendMessage(text) {
-    let body = {
-        message: text
-    };
-
-    $.ajax({
-        url: "/messages",
-        method: "POST",
-        data: JSON.stringify(body),
-        contentType: "application/json",
-        dataType: "json",
-        complete: function () {
-            if (text === 'asdawdwafg32tr31twdfyg172ry2g1uoygr67df') {
-                receiveMessage()
-            }
-        }
-    });
+    $.post("messages",
+        {
+            message: text
+        },
+        function () {
+        });
 }
 
 function receiveMessage() {
@@ -24,9 +14,26 @@ function receiveMessage() {
         dataType: "json",
         contentType: "application/json",
         success: function (response) {
-            if(response[0]['text'] !== 'asdawdwafg32tr31twdfyg172ry2g1uoygr67df') {
-                $('#messages').first().after('<li>' + response[0]['text'] + '</li>');
-            }
+            let html = document.getElementById("messages").innerHTML;
+            html += '<li class="list-group-item">' + response[0]['message'] + '</li>';
+            $('#messages').html(html);
+            receiveMessage();
+        }
+    })
+}
+
+function getAllMessages() {
+    $.ajax({
+        url: "/allmessages",
+        method: "GET",
+        dataType: "json",
+        contentType: "application/json",
+        success: function (response) {
+            let html = "";
+            response.forEach(function (messageDto) {
+                html += '<li class="list-group-item">' + messageDto['message'] + '</li>';
+            });
+            $('#messages').html(html);
             receiveMessage();
         }
     })

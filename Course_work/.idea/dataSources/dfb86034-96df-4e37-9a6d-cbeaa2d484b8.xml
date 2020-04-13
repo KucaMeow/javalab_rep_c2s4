@@ -28,10 +28,11 @@
       <ObjectId>122901</ObjectId>
       <StateNumber>1153</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1227</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1265</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
-      <Relations>sequence|table|123047|123049|1
+      <Relations>sequence|table|139285|139287|1
+sequence|table|139293|139295|1
 </Relations>
     </database>
     <database id="7" parent="1" name="javalab">
@@ -124,7 +125,7 @@
       <Comment>standard public schema</Comment>
       <StateNumber>351</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1228</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1266</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -184,61 +185,102 @@
       <SchemaName>pg_catalog</SchemaName>
       <SchemaId>11</SchemaId>
     </extension>
-    <sequence id="30" parent="22" name="user_id_seq">
-      <ObjectId>123047</ObjectId>
-      <StateNumber>1225</StateNumber>
+    <sequence id="30" parent="22" name="message_id_seq">
+      <ObjectId>139285</ObjectId>
+      <StateNumber>1261</StateNumber>
       <Owner>postgres</Owner>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <table id="31" parent="22" name="user">
-      <ObjectId>123049</ObjectId>
+    <sequence id="31" parent="22" name="user_id_seq">
+      <ObjectId>139293</ObjectId>
+      <StateNumber>1262</StateNumber>
       <Owner>postgres</Owner>
-      <StateNumber>1225</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <table id="32" parent="22" name="message">
+      <ObjectId>139287</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1261</StateNumber>
     </table>
-    <column id="32" parent="31" name="id">
+    <table id="33" parent="22" name="user">
+      <ObjectId>139295</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1262</StateNumber>
+    </table>
+    <column id="34" parent="32" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1225</StateNumber>
-      <DefaultExpression>nextval(&apos;user_id_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>1261</StateNumber>
+      <DefaultExpression>nextval(&apos;message_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="33" parent="31" name="email">
+    <column id="35" parent="32" name="message">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>1225</StateNumber>
+      <StateNumber>1261</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="34" parent="31" name="password">
-      <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <StateNumber>1225</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="35" parent="31" name="role">
-      <Position>4</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>1225</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="36" parent="31" name="state">
-      <Position>5</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>1225</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <index id="37" parent="31" name="user_pkey">
-      <ObjectId>123056</ObjectId>
-      <StateNumber>1225</StateNumber>
+    <index id="36" parent="32" name="message_pkey">
+      <ObjectId>139291</ObjectId>
+      <StateNumber>1261</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="38" parent="31" name="user_pkey">
-      <ObjectId>123057</ObjectId>
-      <StateNumber>1225</StateNumber>
+    <key id="37" parent="32" name="message_pkey">
+      <ObjectId>139292</ObjectId>
+      <StateNumber>1261</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>message_pkey</UnderlyingIndexName>
+    </key>
+    <column id="38" parent="33" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1262</StateNumber>
+      <DefaultExpression>nextval(&apos;user_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="39" parent="33" name="email">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1262</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="40" parent="33" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1262</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="41" parent="33" name="role">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1262</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="42" parent="33" name="state">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1262</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="43" parent="33" name="user_pkey">
+      <ObjectId>139302</ObjectId>
+      <StateNumber>1262</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="44" parent="33" name="user_pkey">
+      <ObjectId>139303</ObjectId>
+      <StateNumber>1262</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>user_pkey</UnderlyingIndexName>

@@ -17,6 +17,7 @@ public class MessagesRepositoryJpaImpl implements MessagesRepository {
     EntityManager entityManager;
 
     @Override
+    @Transactional
     public Optional<Message> find(Long id) {
 
         Message message = entityManager.find(Message.class, id);
@@ -27,6 +28,7 @@ public class MessagesRepositoryJpaImpl implements MessagesRepository {
     }
 
     @Override
+    @Transactional
     public List<Message> findAll() {
         return entityManager.createQuery("SELECT m FROM Message m", Message.class).getResultList();
     }
@@ -38,6 +40,7 @@ public class MessagesRepositoryJpaImpl implements MessagesRepository {
     }
 
     @Override
+    @Transactional
     public void save(MessageDto entity) {
         entityManager.persist(Message.builder()
                 .message(entity.getMessage())
@@ -45,6 +48,7 @@ public class MessagesRepositoryJpaImpl implements MessagesRepository {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         entityManager.remove(find(id));
     }
