@@ -43,9 +43,11 @@ public class WebSocketMessagesHandler extends TextWebSocketHandler {
         }
     }
 
+    //Тут проверяю на авторизацию, если установлено соединение не через websocket
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-
+        //Если установлено не через вебсокет, я ещё раз проверяю, был ли пользователь
+        // По идее этого достаточно было бы и для установки "хендшейка"
         if(session.getClass() != WebSocketServerSockJsSession.class) {
             if(user.getUsername() == null || user.getUsername().isEmpty()) session.close();
         }
