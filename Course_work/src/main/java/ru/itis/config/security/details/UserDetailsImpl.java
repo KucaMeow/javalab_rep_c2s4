@@ -1,4 +1,4 @@
-package ru.itis.config.security_details;
+package ru.itis.config.security.details;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

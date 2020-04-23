@@ -1,4 +1,4 @@
-package ru.itis.config.security_config.jwt;
+package ru.itis.config.security.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -9,7 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import ru.itis.config.security_details.UserDetailsImpl;
+import ru.itis.config.security.details.UserDetailsImpl;
 import ru.itis.models.Role;
 import ru.itis.models.User;
 

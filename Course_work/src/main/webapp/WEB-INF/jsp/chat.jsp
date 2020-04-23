@@ -20,17 +20,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"
             type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="js/messages.js"></script>
 </head>
-<body onload="getAllMessages()">
+<body onload="connect()">
+<div>
+    <label for="message">Текст сообщения</label>
+    <input name="message" id="message" placeholder="Сообщение">
+    <button onclick="sendMessage($('#message').val(), '${email}')">Отправить</button>
+    <h3>Сообщения</h3>
+    <ul id="messagesList">
 
-<div class="container">
-        <ul class="list-group list-group-flush" id="messages" style="max-height: 300px; overflow:scroll;">
-
-        </ul><br/>
-        <input type="text" name="message" id="message" style="width: auto">
-        <input name="btn" id="btn" class="btn btn-dark mr-0" type="button"
-               value="Send message" onclick="sendMessage(document.getElementById('message').value)"><br/>
+    </ul>
 </div>
-<script src="js/messages.js"></script>
 </body>
 </html>

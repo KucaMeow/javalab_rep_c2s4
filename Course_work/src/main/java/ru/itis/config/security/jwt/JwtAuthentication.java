@@ -1,4 +1,4 @@
-package ru.itis.config.security_config.jwt;
+package ru.itis.config.security.jwt;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

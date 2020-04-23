@@ -1,4 +1,4 @@
-package ru.itis.config.security_config;
+package ru.itis.config.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,7 +17,7 @@ import org.springframework.web.filter.GenericFilterBean;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SpringSecurity extends WebSecurityConfigurerAdapter {
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -47,6 +47,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/sandbox").authenticated()
                 .antMatchers("/courses").authenticated()
                 .antMatchers("editor").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/chat").authenticated()
                 .anyRequest().authenticated()
                 //Тут продолжать разрешения, если надо
 
@@ -76,6 +77,6 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/rest/signIn");
+        web.ignoring().antMatchers("/rest/signIn");
     }
 }

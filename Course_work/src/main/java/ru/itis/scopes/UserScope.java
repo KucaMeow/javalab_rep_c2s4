@@ -4,7 +4,7 @@ import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import ru.itis.config.security_details.UserDetailsImpl;
+import ru.itis.config.security.details.UserDetailsImpl;
 import ru.itis.models.User;
 
 import java.util.HashMap;

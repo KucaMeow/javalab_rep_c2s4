@@ -1,4 +1,4 @@
-package ru.itis.config.security_details;
+package ru.itis.config.security.details;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
