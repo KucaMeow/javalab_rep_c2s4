@@ -1,37 +1,47 @@
 package ru.itis.javalabhw.thread;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import ru.itis.javalabhw.handlers.TaskSubscribeHandler;
 import ru.itis.javalabhw.model.Task;
 import ru.itis.javalabhw.services.TaskService;
 
-@Component
+import java.util.Random;
+
 public class TaskWorker extends Thread{
 
-    @Autowired
-    TaskService taskServiceImpl;
-    @Autowired
-    TaskSubscribeHandler taskSubscribeHandler;
+    private String queueName;
+    private TaskService taskService;
 
-    public TaskWorker() {
+    public TaskWorker(TaskService taskService, String queueName) {
+        this.queueName = queueName;
+        this.taskService = taskService;
         this.start();
     }
 
     @Override
     public void run() {
         while (true) {
-            //Имитирую работу
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
-            }
+            synchronized (this) {
+                Task task = taskService.getNextTask(queueName);
+                if(task == null) {
+                    try {
+                        this.wait();
+                    } catch (InterruptedException e) {
+                        throw new IllegalStateException(e);
+                    }
+                    continue;
+                }
 
-            synchronized (taskServiceImpl) {
-                Task task = taskServiceImpl.doNextTask();
-                if(task != null)
-                    taskSubscribeHandler.sendTaskComplete(task);
+                //Имитирую работу
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    throw new IllegalStateException(e);
+                }
+                if((new Random()).nextInt(5) < 3) {
+                    //Ничего не делаем, у нас не получилось (т.е. отказываемся, но откатывать пока нечего)
+                }
+                else {
+                    taskService.sendTaskComplete(task);
+                }
             }
         }
     }

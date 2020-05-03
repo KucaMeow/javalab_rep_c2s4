@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "tasks", schema = "public")
 public class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    String id;
+    String queueName;
     boolean ready;
 }

@@ -4,5 +4,6 @@ import ru.itis.javalabhw.model.Task;
 
 public interface TaskService {
     void saveTask(Task task);
-    Task doNextTask();
+    Task getNextTask(String queueName);
+    void sendTaskComplete(Task task);
 }

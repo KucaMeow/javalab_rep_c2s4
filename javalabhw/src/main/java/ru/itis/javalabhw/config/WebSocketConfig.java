@@ -6,29 +6,21 @@ import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import ru.itis.javalabhw.handlers.AuthHandshakeHandler;
-import ru.itis.javalabhw.handlers.ReceiveTaskHandler;
-import ru.itis.javalabhw.handlers.TaskSubscribeHandler;
+import ru.itis.javalabhw.handlers.WebSocketHandler;
 
 @Configuration
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
 
     @Autowired
-    ReceiveTaskHandler receiveTaskHandler;
-    @Autowired
-    TaskSubscribeHandler taskSubscribeHandler;
+    WebSocketHandler webSocketHandler;
     @Autowired
     AuthHandshakeHandler authHandshakeHandler;
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
         webSocketHandlerRegistry
-                .addHandler(taskSubscribeHandler, "/sub")
-                .setHandshakeHandler(authHandshakeHandler)
-                .setAllowedOrigins("*")
-                .withSockJS();
-        webSocketHandlerRegistry
-                .addHandler(receiveTaskHandler, "/send")
+                .addHandler(webSocketHandler, "/javalabqueue")
                 .setHandshakeHandler(authHandshakeHandler)
                 .setAllowedOrigins("*")
                 .withSockJS();
