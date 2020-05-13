@@ -1,0 +1,51 @@
+pre {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    font-size: 20px
+}
+
+.carousel-item {
+    height: 450px;
+}
+
+.carousel-indicators li {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background-color: darkslategray;
+}
+
+.carousel-indicators {
+    bottom: -50px;
+}
+
+.carousel-item::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-item {
+    -ms-overflow-style: none;
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+.carousel-control-prev {
+    background-color: #e6e6e6;
+    width: 10%;
+}
+
+.carousel-control-next {
+    background-color: #e6e6e6;
+    width: 10%;
+}
+small {
+    padding: 6rem;
+}
+footer {
+    padding-top: 30px;
+}

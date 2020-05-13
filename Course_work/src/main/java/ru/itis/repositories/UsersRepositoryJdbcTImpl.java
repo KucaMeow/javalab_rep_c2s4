@@ -16,8 +16,8 @@ import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Optional;
 
-//@Repository
-@Deprecated
+@Repository
+//@Deprecated
 public class UsersRepositoryJdbcTImpl implements UsersRepository {
 
     //language=SQL

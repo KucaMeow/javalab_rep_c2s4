@@ -3,6 +3,12 @@ package ru.itis.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.itis.dto.ProgramResult;
+import ru.itis.dto.ResultDto;
+import ru.itis.models.CheckboxTest;
+import ru.itis.models.CodeTask;
+import ru.itis.models.CodeTest;
+import ru.itis.repositories.CheckboxTestsRepository;
+import ru.itis.repositories.CodeTasksRepository;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,6 +16,11 @@ import java.util.List;
 
 @Service
 public class CodeExecuteService {
+
+    @Autowired
+    CodeTasksRepository codeTasksRepository;
+    @Autowired
+    CheckboxTestsRepository checkboxTestsRepository;
 
     public ProgramResult executeProgram(String code) {
         List<String> errorsWhileSave = saveFile(code);
@@ -73,9 +84,11 @@ public class CodeExecuteService {
             BufferedReader errorReader = new BufferedReader(new InputStreamReader(pro.getErrorStream()));
             List<String> results = new ArrayList<>();
             List<String> errors = new ArrayList<>();
+            PrintWriter pw = new PrintWriter(pro.getOutputStream(), true);
 
             String temp;
             while ((temp = resultReader.readLine()) != null) {
+                pw.println("1");
                 results.add(temp);
             }
             while ((temp = errorReader.readLine()) != null) {
@@ -93,4 +106,35 @@ public class CodeExecuteService {
         }
     }
 
+    public ResultDto test(long id, String code) {
+        CodeTask codeTask = codeTasksRepository.find(id).get();
+        if(!saveFile(code).isEmpty()) return ResultDto.builder().success(false).build();
+        for(CodeTest codeTest : codeTask.getTests()) {
+            if(!passedTest(codeTest.getInput(), codeTest.getOutput()))
+                return ResultDto.builder().success(false).build();
+        }
+        return ResultDto.builder().success(true).build();
+    }
+
+    private boolean passedTest(String input, String output) {
+        try {
+            Process pro = Runtime.getRuntime().exec("java -cp . Main " + input);
+
+            BufferedReader resultReader = new BufferedReader(new InputStreamReader(pro.getInputStream()));
+            List<String> results = new ArrayList<>();
+
+            String temp;
+            while ((temp = resultReader.readLine()) != null) {
+                results.add(temp);
+            }
+            return results.contains(output);
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    public ResultDto checkAnswerForCheckbox(long id, String answer) {
+        CheckboxTest checkboxTest = checkboxTestsRepository.find(id).get();
+        return ResultDto.builder().success(checkboxTest.getCorrectAnswer().equals(answer)).build();
+    }
 }

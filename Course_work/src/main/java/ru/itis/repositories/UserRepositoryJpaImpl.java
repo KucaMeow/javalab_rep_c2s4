@@ -15,7 +15,8 @@ import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+//@Repository
+@Deprecated
 public class UserRepositoryJpaImpl implements UsersRepository {
 
     @PersistenceContext

@@ -25,13 +25,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private AuthenticationProvider authenticationProvider;
-
-    @Autowired
-    @Qualifier(value = "jwtAuthenticationFilter")
-    private GenericFilterBean jwtAuthenticationFilter;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -62,21 +55,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .rememberMe().key("Don'tShowItToAnyone")
                 .rememberMeParameter("remember-me");
-
-        //TODO: Перенести в другой проект REST, либо продолжить страдать и подключать его тут
-//        http.antMatcher("/rest/**").sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//        http.antMatcher("/rest/**").addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
     }
 
     @Autowired
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
-//        auth.authenticationProvider(authenticationProvider);
-    }
-
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/rest/signIn");
     }
 }

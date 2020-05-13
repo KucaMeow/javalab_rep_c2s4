@@ -3,6 +3,7 @@ package ru.itis.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import freemarker.template.DefaultObjectWrapperBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.context.ApplicationContext;
@@ -16,6 +17,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
@@ -23,6 +26,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import java.util.Locale;
 
 @Configuration
 @PropertySource("classpath:application.properties")
@@ -54,10 +58,27 @@ public class AppConfig {
 
     @Bean
     public ViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("WEB-INF/jsp/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
+        FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+        resolver.setContentType("text/html; charset=utf-8");
+        resolver.setSuffix(".ftlh");
+        return resolver;
+    }
+    @Bean
+    public FreeMarkerConfigurer freemarkerConfig() {
+        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+        freeMarkerConfigurer.setTemplateLoaderPath("WEB-INF/ftlh/");
+        freeMarkerConfigurer.setDefaultEncoding("UTF-8");
+        return freeMarkerConfigurer;
+    }
+
+    @Bean
+    public freemarker.template.Configuration configuration() {
+        freemarker.template.Configuration configuration = freemarkerConfig().getConfiguration();
+        configuration.setEncoding(new Locale("ru"), "utf-8");
+        DefaultObjectWrapperBuilder owb = new DefaultObjectWrapperBuilder(freemarker.template.Configuration.VERSION_2_3_26);
+        owb.setIterableSupport(true);
+        configuration.setObjectWrapper(owb.build());
+        return configuration;
     }
 
     @Bean
