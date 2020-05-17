@@ -15,6 +15,7 @@
 <div class="col-8">
     <div clss="container">
         <form method="post" action="/edit/learning-text/${learningText.id}">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
             <label>
                 Выводимый в модуле текст
                 <textarea rows="5" cols="100" name="text">${learningText.text}</textarea>

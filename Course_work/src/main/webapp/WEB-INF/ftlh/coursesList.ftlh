@@ -1,7 +1,8 @@
+<#import "spring.ftl" as spring />
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Courses</title>
+    <title><@spring.message 'page.courses.list.name'/></title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,7 +16,7 @@
 <table class="table">
     <thead>
     <tr>
-        <th>Курс</th>
+        <th><@spring.message 'page.courses.list.course'/></th>
         <th></th>
     </tr>
     </thead>
@@ -23,7 +24,7 @@
     <#list courses as course>
         <tr>
             <td scope="row">${course.name}</td>
-            <td><a href="/learn/${course.id}">Пройти</a></td>
+            <td><a href="/learn/${course.id}"><@spring.message 'page.courses.list.goto'/></a></td>
         </tr>
     </#list>
     </tbody>

@@ -100,16 +100,19 @@
                             <div class="col-8 mx-auto">
                                 <div class="container">
                                     <form method="post" action="/create/text-lesson">
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                                         <input type="hidden" name="lessonId" value="${lesson.id}">
                                         <button type="submit" class="btn btn-primary">Добавить конспект</button>
                                     </form>
                                     <br>
                                     <form method="post" action="/create/checkbox-test">
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                                         <input type="hidden" name="lessonId" value="${lesson.id}">
                                         <button type="submit" class="btn btn-primary">Добавить checkbox тест</button>
                                     </form>
                                     <br>
                                     <form method="post" action="/create/code-task">
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                                         <input type="hidden" name="lessonId" value="${lesson.id}">
                                         <button type="submit" class="btn btn-primary">Добавить тест с программированием
                                         </button>

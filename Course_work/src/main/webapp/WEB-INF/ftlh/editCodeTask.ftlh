@@ -15,6 +15,7 @@
 <div class="col-8">
     <div class="container">
         <form method="post" action="/edit/code-task/${codeTask.id}" id="form">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
             <label>
                 Описание задания:
                 <textarea rows="5" cols="150" name="text">${codeTask.text}</textarea>

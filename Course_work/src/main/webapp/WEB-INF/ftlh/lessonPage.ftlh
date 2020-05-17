@@ -1,7 +1,8 @@
+<#import "spring.ftl" as spring />
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Lesson</title>
+    <title><@spring.message 'page.lesson.name'/></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -19,7 +20,7 @@
 </div>
 <#if lesson.courseModules?size == 0>
     <div class="container col-8 mx-auto">
-        <h2>Урок пустой, видимо, автор еще не закончил его</h2>
+        <h2><@spring.message 'page.lesson.empty'/></h2>
     </div>
 <#else >
     <div id="carouselId" class="carousel slide" data-ride="false" data-wrap="false" data-interval="false">
@@ -71,7 +72,7 @@
                                         editor_${module.codeTask.id}.resize();
                                     </script>
                                     <button type="button" class="btn btn-success" onclick="codeTest(${module.codeTask.id})">
-                                        Тесты с сервера
+                                        <@spring.message 'page.lesson.tests.from.server'/>
                                     </button>
                                 </div>
                             </div>
@@ -107,7 +108,7 @@
                                         </#list>
                                     </form>
                                     <button type="button" class="btn btn-success"
-                                            onclick="checkboxTest(${module.checkboxTest.id})">Проверить
+                                            onclick="checkboxTest(${module.checkboxTest.id})"><@spring.message 'page.lesson.check'/>
                                     </button>
                                 </div>
                             </div>
@@ -129,7 +130,7 @@
 </#if>
 <footer class="container">
     <small>
-        Описание курса <br>
+        <@spring.message 'page.lesson.course.descr'/> <br>
         ${lesson.course.description}
     </small>
 </footer>
@@ -139,7 +140,7 @@
             "            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                <span aria-hidden=\"true\">&times;</span>\n" +
             "            </button>\n" +
-            "            <strong>Не правильно(</strong>\n" +
+            "            <strong><@spring.message 'page.lesson.incor.msg'/></strong>\n" +
             "        </div>");
     }
 
@@ -148,7 +149,7 @@
             "            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
             "                <span aria-hidden=\"true\">&times;</span>\n" +
             "            </button>\n" +
-            "            <strong>Правильно)</strong>\n" +
+            "            <strong><@spring.message 'page.lesson.cor.msg'/></strong>\n" +
             "        </div>");
     }
 
@@ -156,6 +157,7 @@
         let codeText = window["editor_" + id].getValue();
         $.post("/rest/code-test/" + id,
             {
+                ${_csrf.parameterName}:${_csrf.token},
                 code: codeText
             },
             function (resultObj) {
@@ -172,6 +174,7 @@
         let answer = $("#checkbox_test_form_" + id).serializeArray()[0].value;
         $.post("/rest/checkbox-test/" + id,
             {
+                ${_csrf.parameterName}:${_csrf.token},
                 answer: answer
             },
             function (resultObj) {

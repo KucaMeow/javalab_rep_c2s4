@@ -15,6 +15,7 @@
 <div class="col-8">
     <div class="container">
         <form method="post" action="/edit/checkbox-test/${checkboxTest.id}" id="form">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
             <label>
                 Вопрос для теста:
                 <textarea rows="5" cols="150" name="question">${checkboxTest.question}</textarea>

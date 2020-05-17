@@ -1,3 +1,4 @@
+<#import "spring.ftl" as spring />
 <html>
 <body>
 <header>
@@ -10,13 +11,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/"><@spring.message 'header.main'/><span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/courses">Курсы</a>
+                    <a class="nav-link" href="/courses"><@spring.message 'header.courses'/></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/create/list">Редактор</a>
+                    <a class="nav-link" href="/create/list"><@spring.message 'header.edit.page'/></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,6 +32,8 @@ import java.util.Locale;
 @Configuration
 @PropertySource("classpath:application.properties")
 @EnableAspectJAutoProxy
+@ComponentScan("ru.itis")
+@EnableJpaRepositories("ru.itis")
 public class AppConfig {
 
     @Autowired
@@ -48,6 +51,7 @@ public class AppConfig {
         config.setUsername(environment.getProperty("db.user"));
         config.setPassword(environment.getProperty("db.password"));
         config.setDriverClassName(environment.getProperty("db.driver"));
+        config.setAutoCommit(false);
         return config;
     }
 

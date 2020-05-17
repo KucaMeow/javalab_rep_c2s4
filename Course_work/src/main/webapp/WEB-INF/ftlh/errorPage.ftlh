@@ -1,3 +1,4 @@
+<#import "spring.ftl" as spring />
 <!doctype html>
 <html lang="ru">
 <head>
@@ -18,7 +19,7 @@
         <div class="container text-center">
             <br/>
             <button type="button" class="btn btn-dark btn-lg" onclick="location.href = '/';">
-                На главную
+                <@spring.message("page.home.name")>
             </button>
         </div>
     </div>

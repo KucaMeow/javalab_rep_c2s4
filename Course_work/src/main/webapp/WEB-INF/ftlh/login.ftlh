@@ -1,7 +1,8 @@
+<#import "spring.ftl" as spring />
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <title><@spring.message 'page.login.name'/></title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,26 +16,27 @@
 <main style="padding-top: 6rem">
     <div class="col-3 mx-auto">
         <form method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
         <div class="form-group">
             <label for="">Email</label>
             <input type="email" class="form-control" name="email" id="email" placeholder="">
         </div>
         <div class="form-group">
-            <label for="">Пароль</label>
+            <label for=""><@spring.message 'page.password'/></label>
             <input type="password" class="form-control" name="password" id="password" placeholder="">
         </div>
         <div class="form-check">
             <label class="form-check-label">
                 <input type="checkbox" class="form-check-input" name="remember-me" id="remember-me" value="true"
                        checked>
-                Remember me
+                <@spring.message 'page.login.remember.me'/>
             </label>
         </div>
         <br>
-        <button type="submit" class="btn btn-dark mr-0">Войти</button>
+        <button type="submit" class="btn btn-dark mr-0"><@spring.message 'page.login'/></button>
         <br>
         <br>
-        <small class="form-text text-muted"><a href="/register">Зарегистрироваться</a></small>
+        <small class="form-text text-muted"><a href="/register"><@spring.message 'page.register'/></a></small>
     </form>
     </div>
 </main>

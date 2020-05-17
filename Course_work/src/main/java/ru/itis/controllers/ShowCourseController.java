@@ -22,6 +22,7 @@ public class ShowCourseController {
     LessonsService lessonsService;
 
     @GetMapping("/courses")
+    @Transactional
     public String getCoursesListPage(Model model) {
         List<Course> courses = coursesService.getAllCourses();
         model.addAttribute("courses", courses);

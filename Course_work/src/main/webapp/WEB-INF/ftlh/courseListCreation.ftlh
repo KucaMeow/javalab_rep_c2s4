@@ -21,6 +21,7 @@
 </#list>
     <li>
         <form action="/create/course" method="get">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
             <button type="submit" class="btn btn-success">Добавить курс</button>
         </form>
     </li>

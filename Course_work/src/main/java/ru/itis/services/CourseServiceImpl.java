@@ -19,6 +19,7 @@ public class CourseServiceImpl implements CoursesService {
     @Autowired
     CousresRepository cousresRepository;
     @Override
+    @Transactional
     public List<Course> getAllCourses() {
         return cousresRepository.findAll();
     }

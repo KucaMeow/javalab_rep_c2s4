@@ -1,3 +1,4 @@
+<#import "spring.ftl" as spring />
 <!doctype html>
 <html lang="ru">
 <head>
@@ -5,11 +6,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <title>Home page</title>
+    <title><@spring.message 'page.home.name'/></title>
 
     <style>
         .bd-placeholder-img {
@@ -24,6 +26,7 @@
         .carousel-item {
             height: 32rem;
         }
+
         .carousel-item > img {
             position: absolute;
             top: 0;
@@ -45,17 +48,24 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active" data-interval="10000">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#6f6f6f"/></svg>
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                     preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+                    <rect width="100%" height="100%" fill="#6f6f6f"/>
+                </svg>
                 <div class="container">
                     <div class="carousel-caption text-left">
                         <h1>Площадка для курсов по языку джава</h1>
-                        <p>Простой проект площадка для курсов по джаве с внутренним компилятором и возможностью создавать свои курсы в конструкторе</p>
+                        <p>Простой проект площадка для курсов по джаве с внутренним компилятором и возможностью
+                            создавать свои курсы в конструкторе</p>
                         <p><a class="btn btn-lg btn-dark" href="/register" role="button">Присоединиться</a></p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item" data-interval="10000">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#6f6f6f"/></svg>
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                     preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+                    <rect width="100%" height="100%" fill="#6f6f6f"/>
+                </svg>
                 <div class="container">
                     <div class="carousel-caption text-left">
                         <h1>Самый популярный курс</h1>
@@ -65,7 +75,10 @@
                 </div>
             </div>
             <div class="carousel-item" data-interval="10000">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#6f6f6f"/></svg>
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                     preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+                    <rect width="100%" height="100%" fill="#6f6f6f"/>
+                </svg>
                 <div class="container">
                     <div class="carousel-caption text-left">
                         <h1>Песочница</h1>

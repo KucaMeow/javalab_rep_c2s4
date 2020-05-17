@@ -36,6 +36,7 @@
         var codeText = editor.getValue();
         $.post("execute",
             {
+                ${_csrf.parameterName}:${_csrf.token},
                 code:codeText
             },
             function (resultObj) {

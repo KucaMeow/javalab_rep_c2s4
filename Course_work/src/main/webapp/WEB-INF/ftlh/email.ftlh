@@ -1,7 +1,8 @@
+<#import "spring.ftl" as spring />
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Verification</title>
+    <title><@spring.message 'page.email.name'/></title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,8 +16,8 @@
 <main style="padding-top: 6rem">
     <div class="container-fluid">
         <div class="col-6 mx-auto text-center">
-            <h1>Спасибо за регистрацию</h1>
-            <h2>Проверьте свою электронную почту</h2>
+            <h1><@spring.message 'page.email.message1'/></h1>
+            <h2><@spring.message 'page.email.message2'/></h2>
         </div>
     </div>
 </main>

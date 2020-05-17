@@ -1,3 +1,4 @@
+<#import "spring.ftl" as spring />
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,7 +19,7 @@
 <ul class="col-8 mx-auto">
     <#list course.lessons as lesson>
         <li>
-            <a href="/learn/lesson/${lesson.id}">Перейти к уроку ${lesson_index + 1}</a>
+            <a href="/learn/lesson/${lesson.id}"><@spring.message 'page.course.goto.lesson'/> ${lesson_index + 1}</a>
         </li>
     </#list>
 </ul>
