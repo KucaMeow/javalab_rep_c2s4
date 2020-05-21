@@ -2,6 +2,7 @@ package ru.itis.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.itis.dto.LessonInformationDto;
 import ru.itis.models.Course;
 import ru.itis.models.Lesson;
 import ru.itis.repositories.CousresRepository;
@@ -35,5 +36,10 @@ public class LessonServiceImpl implements LessonsService {
         course.getLessons().add(lesson);
         lessonsRepository.save(lesson);
         return lesson;
+    }
+
+    @Override
+    public LessonInformationDto getLessonInfo(long id) {
+        return lessonsRepository.getLessonInformationDtoFromLesson(id).orElse(null);
     }
 }

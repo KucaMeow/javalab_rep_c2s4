@@ -12,6 +12,7 @@ import ru.itis.repositories.MessagesRepository;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -31,4 +32,12 @@ public class User implements Serializable {
     private State state;
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @Transient
+    Date loginDate;
+
+    @PostLoad
+    public void postLoad() {
+        loginDate = new Date();
+    }
 }

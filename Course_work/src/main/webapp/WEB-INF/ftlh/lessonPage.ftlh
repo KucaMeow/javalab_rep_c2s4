@@ -17,6 +17,12 @@
 <body>
 <#include "header.ftlh">
 <div id="my_alerts" class="container">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>${lessonInfo.authorEmail}  ${lessonInfo.moduleCount}</strong>
+    </div>
 </div>
 <#if lesson.courseModules?size == 0>
     <div class="container col-8 mx-auto">

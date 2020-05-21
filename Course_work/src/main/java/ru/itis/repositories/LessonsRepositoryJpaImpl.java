@@ -1,9 +1,10 @@
 package ru.itis.repositories;
 
 import org.hibernate.Hibernate;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import ru.itis.dto.LessonInformationDto;
 import ru.itis.models.Lesson;
-import ru.itis.models.Message;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -45,5 +46,13 @@ public class LessonsRepositoryJpaImpl implements LessonsRepository {
     @Override
     public void delete(Long id) {
         entityManager.remove(find(id));
+    }
+
+    @Override
+    public Optional<LessonInformationDto> getLessonInformationDtoFromLesson(long id) {
+        return Optional.ofNullable(entityManager
+                .createQuery("select new ru.itis.dto.LessonInformationDto(course.author, l.courseModules.size) " +
+                        "from Lesson l left join l.course as course where l.id = " + id, LessonInformationDto.class)
+                .getSingleResult());
     }
 }

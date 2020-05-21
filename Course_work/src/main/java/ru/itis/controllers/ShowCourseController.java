@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import ru.itis.dto.LessonInformationDto;
 import ru.itis.models.Course;
 import ru.itis.models.Lesson;
 import ru.itis.services.CoursesService;
@@ -41,7 +42,9 @@ public class ShowCourseController {
     @GetMapping("/learn/lesson/{id}")
     public String getLessonPage (@PathVariable long id, Model model) {
         Lesson lesson = lessonsService.getLessont(id);
+        LessonInformationDto lessonInfo = lessonsService.getLessonInfo(id);
         model.addAttribute("lesson", lesson);
+        model.addAttribute("lessonInfo", lessonInfo);
         return "lessonPage";
     }
 }

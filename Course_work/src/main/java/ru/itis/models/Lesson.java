@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -28,4 +29,11 @@ public class Lesson {
     @JoinColumn(name = "courseId")
     @JsonIgnore
     Course course;
+
+    Date lastTimeEdit;
+
+    @PostUpdate
+    public void postUpdate() {
+        lastTimeEdit = new Date();
+    }
 }
